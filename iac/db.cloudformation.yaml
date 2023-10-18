@@ -1,0 +1,78 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: AWS CloudFormation Template for provisioning a Budget Buddy Postgres RDS instance.
+
+Parameters:
+  MasterUsername:
+    Description: The master username for the Postgres instance.
+    Type: String
+    Default: admin
+    NoEcho: True  # This ensures the value is not shown in console/logs.
+
+  MasterUserPassword:
+    Description: The master password for the Postgres instance.
+    Type: String
+    NoEcho: True  # This ensures the value is not shown in console/logs.
+
+  DatabasePort:
+    Description: >
+      The port for the Postgres instance.
+      The default port for Postgres is 5432.
+
+    Type: Number
+    Default: 5432
+    AllowedValues:
+      - 5432
+
+  CIDRBlock:
+    Description: >
+      CIDR block for database access.
+      - For development, you may use 0.0.0.0/0 to allow from any IP. 
+      - In production, restrict to only the CIDR of permitted resources.
+      (No default set to avoid deployment of wide-open DB to prod.)
+    Type: String
+
+  AllocatedStorage:
+    Description: >
+      The amount of storage allocated for the database.
+      Defaults to 20 GB.
+
+    Type: Number
+    Default: 20
+
+  DBInstanceClass:
+    Description: >
+      The database instance class to spin up.
+      Defaults to db.t4g.micro to incur as minimal charges as possible.
+    Type: String
+    Default: db.t4g.micro
+
+Resources:
+
+  # Security group for the RDS instance
+  DatabaseSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security Group for Budget Buddy Postgres RDS instance.
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: !Ref DatabasePort
+          ToPort: !Ref DatabasePort
+          CidrIp: !Ref CIDRBlock
+
+  # RDS instance for Postgres
+  PostgresDatabase:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      Engine: postgres
+      EngineVersion: '15.4'
+      DBInstanceClass: !Ref DBInstanceClass
+      MasterUsername: !Ref MasterUsername
+      MasterUserPassword: !Ref MasterUserPassword
+      AllocatedStorage: !Ref AllocatedStorage
+      VPCSecurityGroups:
+        - !GetAtt DatabaseSecurityGroup.GroupId
+
+Outputs:
+  DatabaseEndpoint:
+    Description: Endpoint of the Postgres RDS instance.
+    Value: !GetAtt PostgresDatabase.Endpoint.Address
