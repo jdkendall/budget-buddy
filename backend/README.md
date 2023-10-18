@@ -109,10 +109,13 @@ To configure the data source using environment variables in your Spring Boot app
 
 
 **Running locally**
+
+Local variables should go into a file named `local.properties` in the root of the [backend](.) folder. This file is in `.gitignore` and thus will not commit with other changes.
+
    ```shell
-   export DB_URL=jdbc:postgresql://your-database-endpoint:5432/your-db-name
-   export DB_USERNAME=your-db-username
-   export DB_PASSWORD=your-db-password
+   DB_URL=jdbc:postgresql://your-database-endpoint:5432/your-db-name
+   DB_USERNAME=your-db-username
+   DB_PASSWORD=your-db-password
    # etc
    ```
 
