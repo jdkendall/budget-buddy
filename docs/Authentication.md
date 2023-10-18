@@ -8,7 +8,7 @@ Firebase Auth is a flexible and easy-to-use authentication solution that integra
 
 JWT is a compact, URL-safe token format used for securely transmitting information between parties. In the context of Firebase, after a user logs in, Firebase Auth provides a JWT, known as an ID token, to identify them. 
 
-(This ID token is separate and distinct from the _access token_, which is another form of authentication with OAuth2 that allows access to resources on the providing servers such as Google - used for looking up profile data, for example. Generally, both are retrieved and available at the same time.)  
+(This ID token is separate and distinct from the _access token_, which is another form of authentication with OAuth2 that allows access to resources on the providing servers such as Google - used for looking up profile data, for example. Generally, both are retrieved and available through the same mechanisms, though there is an extra step for generating the access token which requires a secure connection through the backend server using the Firebase app's web client ID & secret.)  
 
 ### Structure:
 
