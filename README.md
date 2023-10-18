@@ -1,6 +1,6 @@
 # Budget Buddy
 
-Budget Buddy is a web-based budget tracking application built with Java, Spring Boot, and Angular. It allows users to monitor their financial transactions, set budget goals, and get insights into their spending habits. Written both for personal use and to brush up on the latest developments in Java-land the Angular-chipelago. (Sorry, that one was a bit of a stretch.)
+Budget Buddy is a web-based budget tracking application built with Java, Spring Boot, and Angular. It allows users to monitor their financial transactions, set budget goals, and get insights into their spending habits. Written both for personal use and to brush up on the latest developments in Java-land and the Angular-chipelago. (Sorry, that one was a bit of a stretch.)
 
 [![Build](https://github.com/jdkendall/budget-buddy/actions/workflows/main.yml/badge.svg)](https://github.com/jdkendall/budget-buddy/actions)
 
