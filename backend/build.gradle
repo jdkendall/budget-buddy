@@ -40,3 +40,15 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+task loadLocalProperties {
+    doLast {
+        Properties localProps = new Properties()
+        file("local.properties").withInputStream { localProps.load(it) }
+        localProps.each { project.ext.set(it.key, it.value) }
+    }
+}
+
+tasks.named("bootRun").configure {
+    dependsOn loadLocalProperties
+}
