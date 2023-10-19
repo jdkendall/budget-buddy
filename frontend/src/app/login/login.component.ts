@@ -1,7 +1,6 @@
-import {Component, OnInit, OnDestroy, inject, Optional, ChangeDetectorRef} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit, Optional} from '@angular/core';
 import * as firebaseui from 'firebaseui';
-import {Auth, GoogleAuthProvider, EmailAuthProvider} from '@angular/fire/auth';
-import {redirectLoggedInTo} from '@angular/fire/auth-guard';
+import {Auth, EmailAuthProvider, GoogleAuthProvider} from '@angular/fire/auth';
 import {Router} from '@angular/router';
 
 @Component({
@@ -11,9 +10,9 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit, OnDestroy {
   ui: firebaseui.auth.AuthUI;
-  private router: Router;
   @Optional() auth: Auth;
   showWindow: boolean = true;
+  private router: Router;
 
   constructor(@Optional() auth: Auth, router: Router, private cd: ChangeDetectorRef) {
     this.auth = auth;

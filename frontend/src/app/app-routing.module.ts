@@ -4,7 +4,6 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {AuthGuard, redirectLoggedInTo, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
 import {LoginComponent} from './login/login.component';
 import {LandingPageComponent} from './home/landing-page/landing-page.component';
-import {LedgerComponent} from './ledger/ledger/ledger.component';
 import {LedgerPageComponent} from './ledger/ledger-page/ledger-page.component';
 import {NavPanelComponent} from './nav-panel/nav-panel.component';
 import {SpendingPageComponent} from './spending/spending-page/spending-page.component';

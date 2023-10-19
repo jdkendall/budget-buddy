@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AlertsPageComponent } from './alerts-page.component';
+import {AlertsPageComponent} from './alerts-page.component';
 
 describe('AlertsPageComponent', () => {
   let component: AlertsPageComponent;

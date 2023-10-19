@@ -1,5 +1,5 @@
 import {Component, OnInit, Optional} from '@angular/core';
-import {NavigationEnd, Router, Event, EventType, ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Event, EventType, NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs';
 import {Auth} from '@angular/fire/auth';
 
@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
     // Navigate to the login page or initiate the Firebase login flow
     this.router.navigate(['/login']);
   }
+
   async logout() {
     await this.auth.signOut();
 

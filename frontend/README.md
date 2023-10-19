@@ -8,11 +8,11 @@ Budget Buddy provides a user-friendly interface to help users manage their finan
 
 ### Table of Routes
 
-| Route       | Description                                                                                                      | Requires Authorization |
-|-------------|------------------------------------------------------------------------------------------------------------------|------------------------|
-| `/`         | Landing page introducing Budget Buddy and its features.                                                           | No                     |
-| `/dashboard`| User's main hub, showcasing financial overviews, graphs, charts, and access to other features.                     | Yes                    |
-| `/login`    | Entry point for user authentication via Firebase, supporting email/password and Google OAuth2.                    | No                     |
+| Route        | Description                                                                                    | Requires Authorization |
+|--------------|------------------------------------------------------------------------------------------------|------------------------|
+| `/`          | Landing page introducing Budget Buddy and its features.                                        | No                     |
+| `/dashboard` | User's main hub, showcasing financial overviews, graphs, charts, and access to other features. | Yes                    |
+| `/login`     | Entry point for user authentication via Firebase, supporting email/password and Google OAuth2. | No                     |
 
 ### Route Descriptions
 

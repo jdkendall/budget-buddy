@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 })
 export class LandingPageComponent {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   login() {
     // Navigate to the login page or initiate the Firebase login flow

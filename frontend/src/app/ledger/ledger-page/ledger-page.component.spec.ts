@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LedgerPageComponent } from './ledger-page.component';
+import {LedgerPageComponent} from './ledger-page.component';
 
 describe('LedgerPageComponent', () => {
   let component: LedgerPageComponent;
