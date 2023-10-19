@@ -1,0 +1,11 @@
+<div class="ledger-quickbar">
+  <form (ngSubmit)="addEntry()">
+    <input type="number" placeholder="Amount" [(ngModel)]="amount" name="amount">
+    <input type="text" placeholder="Payor/Payee" [(ngModel)]="transactionParty" name="transactionParty">
+    <input type="date" [(ngModel)]="date" name="date">
+    <select [(ngModel)]="category" name="category">
+      <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+    </select>
+    <button type="submit">Add</button>
+  </form>
+</div>
