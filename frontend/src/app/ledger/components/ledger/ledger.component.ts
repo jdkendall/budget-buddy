@@ -6,5 +6,4 @@ import {Component} from '@angular/core';
   styleUrls: ['./ledger.component.less']
 })
 export class LedgerComponent {
-
 }

@@ -7,14 +7,15 @@ import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
 // import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
 import {getAuth, provideAuth} from '@angular/fire/auth';
-import {LoginComponent} from './login/login.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
-import {LandingPageComponent} from './home/landing-page/landing-page.component';
-import {LedgerPageComponent} from './ledger/ledger-page/ledger-page.component';
-import {LedgerComponent} from './ledger/ledger/ledger.component';
-import {NavPanelComponent} from './nav-panel/nav-panel.component';
-import {SpendingPageComponent} from './spending/spending-page/spending-page.component';
-import {AlertsPageComponent} from './alerts/alerts-page/alerts-page.component';
+import {LoginComponent} from './login/components/login/login.component';
+import {DashboardComponent} from './dashboard/components/dashboard/dashboard.component';
+import {LandingPageComponent} from './home/components/landing-page/landing-page.component';
+import {LedgerPageComponent} from './ledger/components/ledger-page/ledger-page.component';
+import {LedgerComponent} from './ledger/components/ledger/ledger.component';
+import {NavPanelComponent} from './shared/components/nav-panel/nav-panel.component';
+import {SpendingPageComponent} from './spending/components/spending-page/spending-page.component';
+import {AlertsPageComponent} from './alerts/components/alerts-page.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {AlertsPageComponent} from './alerts/alerts-page/alerts-page.component';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
+    FormsModule,
   ],
   providers: [
     // ScreenTrackingService,UserTrackingService

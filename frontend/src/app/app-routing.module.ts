@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {DashboardComponent} from './dashboard/dashboard.component';
+import {DashboardComponent} from './dashboard/components/dashboard/dashboard.component';
 import {AuthGuard, redirectLoggedInTo, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
-import {LoginComponent} from './login/login.component';
-import {LandingPageComponent} from './home/landing-page/landing-page.component';
-import {LedgerPageComponent} from './ledger/ledger-page/ledger-page.component';
-import {NavPanelComponent} from './nav-panel/nav-panel.component';
-import {SpendingPageComponent} from './spending/spending-page/spending-page.component';
-import {AlertsPageComponent} from './alerts/alerts-page/alerts-page.component';
+import {LoginComponent} from './login/components/login/login.component';
+import {LandingPageComponent} from './home/components/landing-page/landing-page.component';
+import {LedgerPageComponent} from './ledger/components/ledger-page/ledger-page.component';
+import {NavPanelComponent} from './shared/components/nav-panel/nav-panel.component';
+import {SpendingPageComponent} from './spending/components/spending-page/spending-page.component';
+import {AlertsPageComponent} from './alerts/components/alerts-page.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/login']);
 const redirectAuthorizedToDashboard = () => redirectLoggedInTo(['/dashboard']);
