@@ -1,0 +1,49 @@
+.nav-container {
+  display: flex;
+  height: 100%; /* viewport height */
+  background: #777777;
+}
+
+.sidebar {
+  width: 200px;
+  //background-color: #00682B; /* jade/money green */
+  background-color: #333733;
+  padding: 20px 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin: 0 0 10px;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center; /* vertically aligns the text and the icon */
+  padding: 10px 20px;
+  color: #fff; /* white color for contrast */
+  text-decoration: none;
+  font-weight: 600; /* bold font weight */
+  border-radius: 5px;
+  transition: background-color 0.3s ease; /* smooth transition for hover effect */
+}
+
+.sidebar i {
+  margin-right: 10px; /* space between the icon and the text */
+}
+
+
+.sidebar a.active, .sidebar a:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* subtle hover effect */
+}
+
+.main-content {
+  flex-grow: 1; /* makes the main content grow to fill the remaining space */
+  padding: 20px;
+  background-color: #f2f2f2; /* light gray background */
+}

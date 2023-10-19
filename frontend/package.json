@@ -21,8 +21,10 @@
     "@angular/router": "^16.1.0",
     "firebase": "^10.5.0",
     "firebaseui": "^6.1.0",
+    "font-awesome": "^4.7.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "typeface-sriracha": "^1.1.13",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {

@@ -1,6 +1,32 @@
-# BudgetBuddy
+# Budget Buddy Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
+Budget Buddy's frontend is developed using Angular, providing a modular and reactive interface. The application is structured around several core routes, each serving a distinct purpose. The landing page offers an overview of the platform's features, while the dashboard integrates various data visualization components to represent financial data. Firebase integration ensures secure authentication, allowing users to sign in using multiple methods, including email/password and Google OAuth2.
+
+## Budget Buddy Routes
+
+Budget Buddy provides a user-friendly interface to help users manage their finances. Here's an overview of the available routes and their respective functionalities:
+
+### Table of Routes
+
+| Route       | Description                                                                                                      | Requires Authorization |
+|-------------|------------------------------------------------------------------------------------------------------------------|------------------------|
+| `/`         | Landing page introducing Budget Buddy and its features.                                                           | No                     |
+| `/dashboard`| User's main hub, showcasing financial overviews, graphs, charts, and access to other features.                     | Yes                    |
+| `/login`    | Entry point for user authentication via Firebase, supporting email/password and Google OAuth2.                    | No                     |
+
+### Route Descriptions
+
+#### Home Page (`/`)
+
+The home page serves as the first touchpoint for new users. It offers a detailed introduction to Budget Buddy and its core functionalities, explaining how the platform assists users in managing and understanding their finances. This page is open to everyone and doesn't require any form of authentication.
+
+#### Dashboard (`/dashboard`)
+
+The dashboard is the heart of the Budget Buddy experience for registered users. Once logged in, users can navigate through an assortment of features that help them get insights into their spending habits. This includes graphical representations, tables, and other visuals that depict their current financial situation. Given the sensitive nature of the data displayed, this route requires users to be logged in.
+
+#### Login Page (`/login`)
+
+The login page is the gateway for users to access the Budget Buddy platform's full features. Here, users can authenticate using Firebase with the available providers, currently supporting email/password and Google OAuth2. Upon successful authentication, they are redirected to the dashboard to start their financial journey. This page is publicly accessible to cater to both new and returning users.
 
 ## Development server
 

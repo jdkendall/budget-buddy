@@ -1,3 +1,12 @@
 <div class="container">
-  <router-outlet></router-outlet>
+  <div class="header-container">
+    <header class="header">
+      <h1 class="logo">Budget Buddy</h1>
+      <button *ngIf="showLogin" class="login-btn" (click)="login()">Login</button>
+      <button *ngIf="showLogout" class="login-btn" (click)="logout()">Logout</button>
+    </header>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
 </div>
