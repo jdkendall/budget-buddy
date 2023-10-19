@@ -10,12 +10,10 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit, OnDestroy {
   ui: firebaseui.auth.AuthUI;
-  @Optional() auth: Auth;
   showWindow: boolean = true;
   private router: Router;
 
   constructor(@Optional() auth: Auth, router: Router, private cd: ChangeDetectorRef) {
-    this.auth = auth;
     this.ui = new firebaseui.auth.AuthUI(auth);
     this.router = router;
   }
