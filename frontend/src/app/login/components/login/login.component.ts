@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   redirectOnLogin = (authResult: unknown, redirectUrl?: string | undefined) => {
     this.showWindow = false;
     this.cd.detectChanges();
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/home/dashboard']);
     return false;  // don't redirect to the sign-in page after login
   }
 }

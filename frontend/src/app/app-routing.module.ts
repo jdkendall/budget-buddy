@@ -10,7 +10,7 @@ import {SpendingPageComponent} from './spending/components/spending-page/spendin
 import {AlertsPageComponent} from './alerts/components/alerts-page.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/login']);
-const redirectAuthorizedToDashboard = () => redirectLoggedInTo(['/dashboard']);
+const redirectAuthorizedToDashboard = () => redirectLoggedInTo(['/home/dashboard']);
 
 const dashboardRoute = {
   path: 'dashboard',
@@ -37,7 +37,7 @@ const loginRoute = {
   data: {authGuardPipe: redirectAuthorizedToDashboard}
 };
 
-const homeRoute = {
+const baseRoute = {
   path: '',
   component: LandingPageComponent,
   canActivate: [AuthGuard],
@@ -47,15 +47,21 @@ const homeRoute = {
   }
 };
 
-const appRoute = {
+const homeFallbackRoute = {
   path: '',
+  redirectTo: '/home/dashboard',
+  pathMatch: 'full' as const
+}
+
+const homeRoute = {
+  path: 'home',
   component: NavPanelComponent,
   canActivateChildren: [AuthGuard],
   data: {
     authGuardPipe: redirectUnauthorizedToLogin,
     showLogout: true
   },
-  children: [dashboardRoute, ledgerRoute, spendingHabitsRoute, alertsRoute]
+  children: [dashboardRoute, ledgerRoute, spendingHabitsRoute, alertsRoute, homeFallbackRoute]
 }
 
 const fallbackRoute = {
@@ -65,9 +71,9 @@ const fallbackRoute = {
 };
 
 const routes: Routes = [
-  homeRoute,
+  baseRoute,
   loginRoute,
-  appRoute,
+  homeRoute,
   fallbackRoute
 ];
 

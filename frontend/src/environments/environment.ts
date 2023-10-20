@@ -8,4 +8,7 @@ export const environment = {
     messagingSenderId: '965263284663',
     measurementId: 'G-K7H9F3E6XC',
   },
+  bbApi: {
+    url: 'http://localhost:8080/api'
+  }
 };
