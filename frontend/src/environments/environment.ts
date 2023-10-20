@@ -9,6 +9,6 @@ export const environment = {
     measurementId: 'G-K7H9F3E6XC',
   },
   bbApi: {
-    url: 'http://localhost:8080/api'
+    url: 'http://budget.jdkendall.com/api'
   }
 };

@@ -26,7 +26,9 @@ public class SecurityConfig {
         // Set up Firebase authentication via OAuth2 JWTs + JWKs
         http.cors(c -> c.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests((ahr) -> ahr.anyRequest().authenticated())  // Protect all endpoints
+                .authorizeHttpRequests((ahr) ->
+                        ahr.requestMatchers("/api/**").authenticated() // Protect API
+                                .requestMatchers("/**").permitAll()) // Allow static asset access
                 .oauth2ResourceServer((o2rs) -> o2rs.jwt(j -> j.jwkSetUri(this.jwkSetUri)));
         return http.build();
     }
@@ -38,8 +40,9 @@ public class SecurityConfig {
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
+        // TODO: Pull CORS configuration from app config
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOriginPatterns(Arrays.asList("http://localhost:*"));
+        configuration.setAllowedOriginPatterns(Arrays.asList("http://localhost:*", "https://budget.jdkendall.com/*"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "OPTIONS", "DELETE"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
