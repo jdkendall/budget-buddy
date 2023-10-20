@@ -1,2 +1,8 @@
-<app-quickbar></app-quickbar>
-<app-ledger></app-ledger>
+<div class="spinner-box" *ngIf="isLoading">
+  <!-- display loading widget -->
+  <div class="spinner"></div>
+</div>
+<div *ngIf="!isLoading">
+  <app-quickbar (addTransaction)="addTransaction($event)"></app-quickbar>
+  <app-ledger [transactions]="transactions"></app-ledger>
+</div>

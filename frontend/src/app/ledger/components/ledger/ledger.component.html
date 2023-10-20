@@ -1,42 +1,40 @@
-<div class="spinner-box" *ngIf="isLoading">
-  <!-- display loading widget -->
-  <div class="spinner"></div>
-</div>
-<div *ngIf="!isLoading">
-  <!-- Date Filter -->
-  <div class="ledger-filter">
+<!-- Date Filter -->
+<div class="ledger-filter">
   <span class="date-input">
     <label>Start Date:</label>
     <input type="date" [(ngModel)]="startDate">
   </span>
 
-    <span class="date-input">
+  <span class="date-input">
     <label>End Date:</label>
     <input type="date" [(ngModel)]="endDate">
   </span>
-  </div>
+</div>
 
-  <!-- Ledger Display -->
-  <div class="ledger-display">
-    <ngx-datatable
-      class="material"
-      [rows]="transactions"
-      [columnMode]="'force'"
-      [headerHeight]="50"
-      [footerHeight]="50"
-      [rowHeight]="'auto'"
-      [rowClass]="getAlternatingColors"
-      #table>
+<!-- Ledger Display -->
+<div class="ledger-display">
+  <ngx-datatable
+    class="material"
+    [rows]="transactions"
+    [columnMode]="'force'"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    [rowHeight]="'auto'"
+    [rowClass]="getAlternatingColors"
+    #table>
 
-      <ngx-datatable-column name="Date" prop="date" [resizeable]="true">
-        <ng-template ngx-datatable-cell-template let-value="value">
-          {{ value | date: 'yyyy-MM-dd' }}
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="Transaction Party" prop="transactionParty" [resizeable]="true"></ngx-datatable-column>
-      <ngx-datatable-column name="Category" prop="category" [resizeable]="true"></ngx-datatable-column>
-      <ngx-datatable-column name="Amount" prop="amount" [resizeable]="true"></ngx-datatable-column>
+    <ngx-datatable-column name="Date" prop="date" [resizeable]="true">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{ value | date: 'yyyy-MM-dd' }}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Transaction Party" prop="transactionParty" [resizeable]="true"></ngx-datatable-column>
+    <ngx-datatable-column name="Category" prop="category" [resizeable]="true"></ngx-datatable-column>
+    <ngx-datatable-column name="Amount" prop="amount" [resizeable]="true">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{ dineroToNumber(value) | currency:'USD' }}
+      </ng-template>
+    </ngx-datatable-column>
 
-    </ngx-datatable>
-  </div>
+  </ngx-datatable>
 </div>

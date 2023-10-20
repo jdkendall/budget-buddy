@@ -18,6 +18,7 @@ import {AlertsPageComponent} from './alerts/components/alerts-page.component';
 import { QuickbarComponent } from './ledger/components/quickbar/quickbar.component';
 import {FormsModule} from '@angular/forms';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
     BrowserModule,
     AppRoutingModule,
     NgxDatatableModule,
+    HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),

@@ -1,36 +1,32 @@
 // user.service.ts
 import {inject, Injectable} from '@angular/core';
-import { Auth, User } from '@angular/fire/auth';
-import firebase from 'firebase/compat';
-import Unsubscribe = firebase.Unsubscribe;
+import {Auth, User} from '@angular/fire/auth';
+import {from, Observable, of, switchMap} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private user: User | null = null;
   private auth: Auth = inject(Auth);
+  private user$: Observable<User | null>;
 
   constructor() {
-    this.user = this.auth.currentUser;
-    this.auth.onAuthStateChanged(user => this.user = user);
-  }
-
-  async waitForUser(): Promise<User | null> {
-    if (this.user !== null) {
-      return this.user;
-    }
-
-    return new Promise<User | null>(resolve => {
-      const unsub: Unsubscribe = this.auth.onAuthStateChanged(user => {
-        unsub();
-        resolve(user);
-      });
+    this.user$ = new Observable<User | null>(sub => {
+      // Return the unsubscribe function so it's called when the observable is completed/destroyed
+      return this.auth.onAuthStateChanged(user => sub.next(user),);
     });
   }
 
-  async getIdToken() {
-    const user = await this.waitForUser();
-    return user?.getIdToken();
+
+  // Observable that emits the current idToken or null
+  getIdToken(): Observable<string | null> {
+    return this.user$.pipe(
+      switchMap(user => {
+        if (user) {
+          return from(user.getIdToken()); // This returns a Promise<string>
+        }
+        return of(null); // Wrapping null in an array makes it an observable emitting null
+      })
+    );
   }
 }
