@@ -41,6 +41,10 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
+### Static ###
+/backend/src/main/resources/static
+!/backend/src/main/resources/static/.placeholder
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
