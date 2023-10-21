@@ -21,6 +21,12 @@ public class SecurityConfig {
     @Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
     private String jwkSetUri;
 
+    @Value("${budbud.allowed.origins}")
+    private String[] allowedOrigins;
+
+    @Value("${budbud.allowed.methods}")
+    private String[] allowedMethods;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         // Set up Firebase authentication via OAuth2 JWTs + JWKs
@@ -42,8 +48,8 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         // TODO: Pull CORS configuration from app config
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOriginPatterns(Arrays.asList("http://localhost:*", "https://budget.jdkendall.com/*"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "OPTIONS", "DELETE"));
+        configuration.setAllowedOriginPatterns(Arrays.asList(this.allowedOrigins));
+        configuration.setAllowedMethods(Arrays.asList(this.allowedMethods));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
 
