@@ -4,22 +4,22 @@
   <aside class="sidebar">
     <ul>
       <li>
-        <a (click)="navigate('/home/dashboard')" class="active">
+        <a [routerLink]="['/home/dashboard']" [routerLinkActive]="'active'">
           <i aria-hidden="true" class="fa fa-tachometer"></i> Dashboard
         </a>
       </li>
       <li>
-        <a (click)="navigate('/home/ledger')">
+        <a [routerLink]="['/home/ledger']" [routerLinkActive]="'active'">
           <i aria-hidden="true" class="fa fa-book"></i> Ledger
         </a>
       </li>
       <li>
-        <a (click)="navigate('/home/spending')">
+        <a [routerLink]="['/home/spending']" [routerLinkActive]="'active'">
           <i aria-hidden="true" class="fa fa-money"></i> Spending Habits
         </a>
       </li>
       <li>
-        <a (click)="navigate('/home/alerts')">
+        <a [routerLink]="['/home/alerts']" [routerLinkActive]="'active'">
           <i aria-hidden="true" class="fa fa-bell"></i> Alerts
         </a>
       </li>
