@@ -19,6 +19,11 @@ import { QuickbarComponent } from './ledger/components/quickbar/quickbar.compone
 import {FormsModule} from '@angular/forms';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {HttpClientModule} from '@angular/common/http';
+import { DateRangeFilterComponent } from './shared/components/date-range-filter/date-range-filter.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -31,10 +36,12 @@ import {HttpClientModule} from '@angular/common/http';
     NavPanelComponent,
     SpendingPageComponent,
     AlertsPageComponent,
-    QuickbarComponent
+    QuickbarComponent,
+    DateRangeFilterComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     NgxDatatableModule,
     HttpClientModule,
@@ -42,6 +49,9 @@ import {HttpClientModule} from '@angular/common/http';
     // provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
     FormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
     // ScreenTrackingService,UserTrackingService

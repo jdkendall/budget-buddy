@@ -1,40 +1,29 @@
-<!-- Date Filter -->
-<div class="ledger-filter">
-  <span class="date-input">
-    <label>Start Date:</label>
-    <input type="date" [(ngModel)]="startDate">
-  </span>
-
-  <span class="date-input">
-    <label>End Date:</label>
-    <input type="date" [(ngModel)]="endDate">
-  </span>
-</div>
-
 <!-- Ledger Display -->
 <div class="ledger-display">
-  <ngx-datatable
-    class="material"
-    [rows]="transactions"
-    [columnMode]="'force'"
-    [headerHeight]="50"
-    [footerHeight]="50"
-    [rowHeight]="'auto'"
-    [rowClass]="getAlternatingColors"
-    #table>
+<table mat-table [dataSource]="transactions" matSort matSortActive="date" matSortDirection="desc" matSortDisableClear>
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+    <td mat-cell *matCellDef="let tx"> {{tx.date}} </td>
+  </ng-container>
+  <ng-container matColumnDef="transactionParty">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Party </th>
+    <td mat-cell *matCellDef="let tx"> {{tx.transactionParty}} </td>
+  </ng-container>
+  <ng-container matColumnDef="category">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+    <td mat-cell *matCellDef="let tx"> {{tx.category}} </td>
+  </ng-container>
+  <ng-container matColumnDef="amount">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount </th>
+    <td mat-cell *matCellDef="let tx"> {{tx.amount.toUnit() | currency:"USD" }} </td>
+  </ng-container>
 
-    <ngx-datatable-column name="Date" prop="date" [resizeable]="true">
-      <ng-template ngx-datatable-cell-template let-value="value">
-        {{ value | date: 'yyyy-MM-dd' }}
-      </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column name="Transaction Party" prop="transactionParty" [resizeable]="true"></ngx-datatable-column>
-    <ngx-datatable-column name="Category" prop="category" [resizeable]="true"></ngx-datatable-column>
-    <ngx-datatable-column name="Amount" prop="amount" [resizeable]="true">
-      <ng-template ngx-datatable-cell-template let-value="value">
-        {{ dineroToNumber(value) | currency:'USD' }}
-      </ng-template>
-    </ngx-datatable-column>
+  <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+  <tr mat-row *matRowDef="let rowData; columns: displayColumns"></tr>
+</table>
 
-  </ngx-datatable>
+  <mat-paginator [pageSizeOptions]="[10, 20, 40, 80]"
+                 showFirstLastButtons
+                 aria-label="Select page of transactions">
+  </mat-paginator>
 </div>

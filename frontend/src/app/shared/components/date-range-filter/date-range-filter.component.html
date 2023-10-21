@@ -1,0 +1,11 @@
+<div class="date-range-filter">
+  <span class="date-input">
+    <label>Start Date:</label>
+    <input type="date" [ngModel]="startDate | date:'yyyy-MM-dd'" (ngModelChange)="onDateChanged()">
+  </span>
+
+  <span class="date-input">
+    <label>End Date:</label>
+    <input type="date" [ngModel]="endDate | date:'yyyy-MM-dd'" (ngModelChange)="onDateChanged()">
+  </span>
+</div>

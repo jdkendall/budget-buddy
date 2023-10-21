@@ -1,3 +1,10 @@
+.ledger-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
 /* CSS for the spinner */
 .spinner-box {
   display: flex;
@@ -22,4 +29,17 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.top-bar {
+  flex-shrink: 2;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+
+.bar-shrink {
+  flex-shrink: 1;
 }

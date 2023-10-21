@@ -6,6 +6,7 @@ import {catchError, map, Observable, switchMap, throwError} from 'rxjs';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {CreateTransactionResponse} from '../models/CreateTransactionResponse.model';
 import dinero from 'dinero.js';
+import moment from 'moment';
 
 @Injectable({
   providedIn: 'root',
@@ -16,11 +17,11 @@ export class TransactionsService {
   constructor(private http: HttpClient) {
   }
 
-  public getTransactions(): Observable<Transaction[]> {
+  public getTransactions(startDate: Date, endDate: Date): Observable<Transaction[]> {
     // TODO: Retry logic
     return this.userService.getIdToken()
       .pipe(
-        switchMap(token => this.getTransactionsApiCall(token))
+        switchMap(token => this.getTransactionsApiCall(startDate, endDate, token))
       ).pipe(catchError(this.handleError));
   }
 
@@ -34,13 +35,17 @@ export class TransactionsService {
       .pipe(catchError(this.handleError));
   }
 
-  private getTransactionsApiCall(token: string | null): Observable<Transaction[]> {
+  private getTransactionsApiCall(startDate: Date, endDate: Date, token: string | null): Observable<Transaction[]> {
     if (!token) {
       // If the token is null or undefined, throw an error
       return throwError(() => 'Token is absent. User might not be authenticated.');
     }
 
     return this.http.get<Transaction[]>(`${environment.bbApi.url}/transactions`, {
+      params: {
+          startDate: moment(startDate).format("YYYY-MM-DD"),
+          endDate: moment(endDate).format("YYYY-MM-DD")
+        },
       headers: {Authorization: `Bearer ${token}`}
     }).pipe(
       // Temporary until I implement Dinero type handling on server-side
@@ -59,6 +64,7 @@ export class TransactionsService {
 
     return this.http.post<CreateTransactionResponse>(`${environment.bbApi.url}/transactions`, {
       ...transaction,
+      date: moment(transaction.date).format("YYYY-MM-DD"),
       amount: transaction.amount.toUnit()
     }, {
       headers: {

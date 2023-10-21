@@ -1,6 +1,4 @@
 @import 'reset.less';
-@import 'node_modules/@swimlane/ngx-datatable/themes/material.css';
-@import 'node_modules/@swimlane/ngx-datatable/assets/icons.css';
 @import 'firebaseui/dist/firebaseui.css';
 @import 'node_modules/typeface-sriracha/index.css';
 
@@ -8,15 +6,5 @@ body {
   background: #dddddd;
 }
 
-// Use a prettier color for fade in on ngx-datatable
-.ngx-datatable.material:not(.cell-selection) .datatable-body-row:hover, .ngx-datatable.material:not(.cell-selection) .datatable-body-row:hover .datatable-row-group {
-  background-color: rgb(148, 205, 156) !important;
-  transition-property: background;
-  transition-duration: 0.3s;
-  transition-timing-function: linear;
-}
-
-// also, add our own striping
-.datatable-row-odd {
-  background: rgb(238, 238, 238) !important;
-}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

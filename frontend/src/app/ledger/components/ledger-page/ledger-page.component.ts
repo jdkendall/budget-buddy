@@ -1,6 +1,9 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {Transaction} from '../../../shared/models/transaction.model';
 import {TransactionsService} from '../../services/transactions.service';
+import {DateChangeEvent} from '../../../shared/components/date-range-filter/date-range-filter.component';
+import moment from 'moment';
+import {MatTableDataSource, MatTableDataSourcePaginator} from '@angular/material/table';
 
 @Component({
   selector: 'app-ledger-page',
@@ -9,17 +12,17 @@ import {TransactionsService} from '../../services/transactions.service';
 })
 export class LedgerPageComponent implements OnInit {
   isLoading: boolean = true;
-  transactions: Transaction[] = [];
+  transactions: MatTableDataSource<Transaction> = new MatTableDataSource();
   transactionsService: TransactionsService = inject(TransactionsService);
 
-  ngOnInit(): void {
+    ngOnInit(): void {
     this.getTransactions();
   }
 
   getTransactions() {
-    this.transactionsService.getTransactions().subscribe({
+    this.transactionsService.getTransactions(moment().subtract(30, "days").toDate(), moment().toDate()).subscribe({
         next: (data: Transaction[]) => {
-          this.transactions = data;
+          this.transactions.data = data;
           this.isLoading = false;
         },
         error: (error: unknown) => console.log(error)
@@ -31,22 +34,32 @@ export class LedgerPageComponent implements OnInit {
   addTransaction(newTx: Transaction) {
 
     // Optimistically update the UI
-    this.transactions = [...this.transactions, newTx];
+    this.transactions.data = [...this.transactions.data, newTx];
 
     // Send the data to the server
     this.transactionsService.createTransaction(newTx).subscribe(
       {
         next: addedTx => {
           // Replace the temporary product with the one from the server
-          const index = this.transactions.findIndex(p => p.id === newTx.id);
-          this.transactions[index].id = addedTx.id;
+          const index = this.transactions.data.findIndex(p => p.id === newTx.id);
+          this.transactions.data[index].id = addedTx.id;
         },
         error: error => {
           console.error('Error adding transaction', error);
           // Rollback the optimistic update
-          this.transactions = this.transactions.filter(p => p.id !== newTx.id);
+          this.transactions.data = this.transactions.data.filter(p => p.id !== newTx.id);
         }
       }
     );
+  }
+
+  onDateRangeChanged($event: DateChangeEvent) {
+    this.isLoading = true;
+    this.transactionsService.getTransactions($event.startDate, $event.endDate).subscribe({
+      next: (data: Transaction[]) => {
+        this.transactions.data = data;
+        this.isLoading = false;
+      }
+    });
   }
 }
