@@ -1,11 +1,17 @@
 <div class="ledger-quickbar">
   <form (ngSubmit)="addEntry()">
-    <input type="number" placeholder="Amount" [(ngModel)]="amount" name="amount">
-    <input type="text" placeholder="Payor/Payee" [(ngModel)]="transactionParty" name="transactionParty">
-    <input type="date" [(ngModel)]="date" name="date">
-    <select [(ngModel)]="category" name="category">
+    <label for="amount" style="grid-column: 1 / span 1; grid-row: 1 / span 1;"> Amount </label>
+    <input type="number" placeholder="Amount" [(ngModel)]="amount" name="amount" id="amount"
+           style="grid-column: 1 / span 1; grid-row: 2 / span 1;">
+    <label for="party" style="grid-column: 2 / span 1; grid-row: 1 / span 1;"> Party</label>
+    <input type="text" placeholder="Payor/Payee" [(ngModel)]="transactionParty" name="transactionParty" id="party"
+           style="grid-column: 2 / span 1; grid-row: 2 / span 1;">
+    <label for="date"  style="grid-column: 3 / span 1; grid-row: 1 / span 1;">Date</label>
+    <input type="date" [(ngModel)]="date" name="date" id="date"  style="grid-column: 3 / span 1; grid-row: 2 / span 1;">
+    <label for="category" style="grid-column: 4 / span 1; grid-row: 1 / span 1;">Category</label>
+    <select [(ngModel)]="category" name="category" id="category" style="grid-column: 4 / span 1; grid-row: 2 / span 1;">
       <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
     </select>
-    <button type="submit">Add</button>
+    <button type="submit" style="grid-column: 5 / span 1; grid-row: 2 / span 1;">Add</button>
   </form>
 </div>
