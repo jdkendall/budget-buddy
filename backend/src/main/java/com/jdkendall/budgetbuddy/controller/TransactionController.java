@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/transactions")
@@ -25,8 +27,8 @@ public class TransactionController {
     private TransactionMapper txMapper;
 
     @GetMapping
-    public ResponseEntity<List<TransactionDto>> getAllTransactions(BBUser user) {
-        List<TransactionDto> transactions = transactionService.getAllTransactionsForUser(user.getId())
+    public ResponseEntity<List<TransactionDto>> getAllTransactions(BBUser user, @RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
+        List<TransactionDto> transactions = transactionService.getAllTransactionsForUser(user.getId(), Optional.of(startDate), Optional.of(endDate))
                 .stream()
                 .map(this.txMapper::txToDTO)
                 .collect(java.util.stream.Collectors.toList());

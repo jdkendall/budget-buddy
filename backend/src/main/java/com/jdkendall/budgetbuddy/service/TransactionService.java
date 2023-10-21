@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -24,7 +26,21 @@ public class TransactionService {
     @Autowired
     private TransactionPartyRepository txPartyRepository;
 
+    @Deprecated
     public List<Transaction> getAllTransactionsForUser(UUID id) {
+        return this.getAllTransactionsForUser(id, Optional.empty(), Optional.empty());
+    }
+
+    public List<Transaction> getAllTransactionsForUser(UUID id, Optional<LocalDate> startDate, Optional<LocalDate> endDate) {
+        boolean beforeEnd = startDate.isEmpty() && endDate.isPresent();
+        boolean afterStart = startDate.isPresent() && endDate.isEmpty();
+        boolean betweenDates = startDate.isPresent() && endDate.isPresent();
+
+        if(afterStart) return transactionRepository.findByUserIdAndDateAfter(id, startDate.get());
+        if(beforeEnd) return transactionRepository.findByUserIdAndDateBefore(id, endDate.get());
+        if(betweenDates) return transactionRepository.findByUserIdAndDateBetween(id, startDate.get(), endDate.get());
+
+        // No dates, pull all records
         return transactionRepository.findByUserId(id);
     }
 
