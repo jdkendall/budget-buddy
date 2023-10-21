@@ -2,7 +2,19 @@
 
 Budget Buddy is a web-based budget tracking application built with Java, Spring Boot, and Angular. It allows users to monitor their financial transactions, set budget goals, and get insights into their spending habits. Written both for personal use and to brush up on the latest developments in Java-land and the Angular-chipelago. (Sorry, that one was a bit of a stretch.)
 
+![GitHub](https://img.shields.io/github/license/jdkendall/budget-buddy)
+
 [![Build](https://github.com/jdkendall/budget-buddy/actions/workflows/main.yml/badge.svg)](https://github.com/jdkendall/budget-buddy/actions) ![Demo Server](https://img.shields.io/uptimerobot/status/m795507466-4af9f0451441ddec2ea0c1f8)
+
+## Technologies
+
+**Frontend** ![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) ![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+
+**Backend** ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white) ![Spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
+
+**CI/CD** ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+
+**Hosted Infra** ![Postgres](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white) ![AWS](https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white) ![Railway](https://img.shields.io/badge/Railway-131415?style=for-the-badge&logo=railway&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
 
 ## Features
 
