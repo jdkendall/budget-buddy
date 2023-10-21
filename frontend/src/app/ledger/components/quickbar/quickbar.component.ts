@@ -13,7 +13,7 @@ export class QuickbarComponent {
   amount: number | undefined;
   transactionParty: string | undefined;
   category: string | undefined;
-  date: Date | undefined;
+  date: Date = new Date();
   categories = ['Rent', 'Utilities', 'Groceries', 'Entertainment'];
 
   constructor() {
@@ -34,6 +34,8 @@ export class QuickbarComponent {
       category: this.category,
       id
     };
+
+    delete this.amount;
 
     this.addTransaction.emit(newTx);
   }

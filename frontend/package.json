@@ -28,6 +28,7 @@
     "firebaseui": "^6.1.0",
     "font-awesome": "^4.7.0",
     "moment": "^2.29.4",
+    "ngx-currency": "^4.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "typeface-sriracha": "^1.1.13",

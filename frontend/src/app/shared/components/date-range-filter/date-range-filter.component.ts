@@ -1,5 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import moment from 'moment';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-date-range-filter',
@@ -12,12 +11,18 @@ export class DateRangeFilterComponent {
   endDate: Date = new Date();
   startDate: Date = new Date(new Date().setDate(this.endDate.getDate() - 30));
 
-  onDateChanged() {
+  onDateChanged(target: 'startDate' | 'endDate', $event: any) {
+    if (target == 'startDate') {
+      this.startDate = $event;
+    } else if (target == 'endDate') {
+      this.endDate = $event;
+    }
+
     this.dateChanged.emit({startDate: this.startDate, endDate: this.endDate});
   }
 }
 
 export interface DateChangeEvent {
-    startDate: Date,
-    endDate: Date
+  startDate: Date,
+  endDate: Date
 }
