@@ -6,11 +6,12 @@ Budget Buddy is a web-based budget tracking application built with Java, Spring 
 
 ## Features
 
- _In the works!_
+- **Transaction Tracking**: Log daily transactions and categorize them for better financial management.
 
 ## Planned Features
 
-- **Transaction Tracking**: Log daily transactions and categorize them for better financial management.
+- **Transaction Editing**: Edit your transactions after entering them into the ledger! (Revolutionary technology!)
+- **Custom Categories**: Create new categories or use the presets.
 - **Budget Goals**: Set monthly or yearly budget goals and track your progress.
 - **Spending Insights**: Visualize your spending habits with intuitive charts and graphs.
 - **Alerts & Notifications**: Get notified when you're close to your budget limit or when unusual spending is detected.
