@@ -68,12 +68,11 @@ import {DebtOverviewComponent} from './dashboard/components/widgets/debt-overvie
 import {NgForOf} from '@angular/common';
 import {GridsterComponent, GridsterItemComponent} from 'angular-gridster2';
 import {PolywidgetComponent} from './dashboard/components/widgets/polywidget/polywidget.component';
-import * as PlotlyJS from 'plotly.js-dist-min';
-import { PlotlyModule } from 'angular-plotly.js';
+import { PlotlyViaCDNModule } from 'angular-plotly.js';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatButtonModule} from '@angular/material/button';
 
-PlotlyModule.plotlyjs = PlotlyJS;
+PlotlyViaCDNModule.setPlotlyVersion('latest');
 
 @NgModule({
   declarations: [
@@ -122,7 +121,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    PlotlyModule,
+    PlotlyViaCDNModule,
     NgForOf,
     GridsterComponent,
     GridsterItemComponent,
