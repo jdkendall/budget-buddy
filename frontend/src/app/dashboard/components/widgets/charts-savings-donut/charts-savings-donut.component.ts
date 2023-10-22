@@ -22,7 +22,7 @@ export class ChartsSavingsDonutComponent {
   };
 
   readonly data: Plotly.Data = [
-    {values: [1, 2, 3], labels: ['Foo', 'Bar', 'Baz'], type: 'pie', hole: 0.4},
+    {values: [1, 2, 3], labels: ['Second Breakfast', 'Vogon Poetry', 'Borg Upgrades'], type: 'pie', hole: 0.4},
   ];
 
   readonly frameConfig: Plotly.Config = {

@@ -23,7 +23,7 @@ export class ChartsExpensesPieComponent {
   };
 
   readonly data: Plotly.Data = [
-    {values: [1, 2, 3], labels: ['Foo', 'Bar', 'Baz'], type: 'pie'},
+    {values: [5, 2, 3, 6], labels: ['Spam', 'Spam ', 'Eggs', 'Spam  '], type: 'pie'},
   ];
 
   readonly frameConfig: Plotly.Config = {
