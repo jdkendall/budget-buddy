@@ -24,6 +24,56 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxCurrencyDirective} from 'ngx-currency';
+import {
+  SummaryCurrentBalanceComponent
+} from './dashboard/components/widgets/summary-current-balance/summary-current-balance.component';
+import {
+  SummaryTotalIncomeComponent
+} from './dashboard/components/widgets/summary-total-income/summary-total-income.component';
+import {
+  SummaryTotalExpensesComponent
+} from './dashboard/components/widgets/summary-total-expenses/summary-total-expenses.component';
+import {
+  SummaryNetCashFlowComponent
+} from './dashboard/components/widgets/summary-net-cash-flow/summary-net-cash-flow.component';
+import {
+  ChartsExpensesPieComponent
+} from './dashboard/components/widgets/charts-expenses-pie/charts-expenses-pie.component';
+import {
+  ChartsMonthlyBarComponent
+} from './dashboard/components/widgets/charts-monthly-bar/charts-monthly-bar.component';
+import {ChartsDailyLineComponent} from './dashboard/components/widgets/charts-daily-line/charts-daily-line.component';
+import {
+  ChartsSavingsDonutComponent
+} from './dashboard/components/widgets/charts-savings-donut/charts-savings-donut.component';
+import {
+  RecentTransactionsComponent
+} from './dashboard/components/widgets/recent-transactions/recent-transactions.component';
+import {BudgetOverviewComponent} from './dashboard/components/widgets/budget-overview/budget-overview.component';
+import {SavingsGoalsComponent} from './dashboard/components/widgets/savings-goals/savings-goals.component';
+import {
+  AlertsNotificationsComponent
+} from './dashboard/components/widgets/alerts-notifications/alerts-notifications.component';
+import {UpcomingBillsComponent} from './dashboard/components/widgets/upcoming-bills/upcoming-bills.component';
+import {
+  CashFlowForecastComponent
+} from './dashboard/components/widgets/cash-flow-forecast/cash-flow-forecast.component';
+import {QuickActionsComponent} from './dashboard/components/widgets/quick-actions/quick-actions.component';
+import {TipsInsightsComponent} from './dashboard/components/widgets/tips-insights/tips-insights.component';
+import {
+  MonthlyComparisonComponent
+} from './dashboard/components/widgets/monthly-comparison/monthly-comparison.component';
+import {SavingsRateComponent} from './dashboard/components/widgets/savings-rate/savings-rate.component';
+import {DebtOverviewComponent} from './dashboard/components/widgets/debt-overview/debt-overview.component';
+import {NgForOf} from '@angular/common';
+import {GridsterComponent, GridsterItemComponent} from 'angular-gridster2';
+import {PolywidgetComponent} from './dashboard/components/widgets/polywidget/polywidget.component';
+import * as PlotlyJS from 'plotly.js-dist-min';
+import { PlotlyModule } from 'angular-plotly.js';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {MatButtonModule} from '@angular/material/button';
+
+PlotlyModule.plotlyjs = PlotlyJS;
 
 @NgModule({
   declarations: [
@@ -37,7 +87,27 @@ import {NgxCurrencyDirective} from 'ngx-currency';
     SpendingPageComponent,
     AlertsPageComponent,
     QuickbarComponent,
-    DateRangeFilterComponent
+    DateRangeFilterComponent,
+    SummaryCurrentBalanceComponent,
+    SummaryTotalIncomeComponent,
+    SummaryTotalExpensesComponent,
+    SummaryNetCashFlowComponent,
+    ChartsExpensesPieComponent,
+    ChartsMonthlyBarComponent,
+    ChartsDailyLineComponent,
+    ChartsSavingsDonutComponent,
+    RecentTransactionsComponent,
+    BudgetOverviewComponent,
+    SavingsGoalsComponent,
+    AlertsNotificationsComponent,
+    UpcomingBillsComponent,
+    CashFlowForecastComponent,
+    QuickActionsComponent,
+    TipsInsightsComponent,
+    MonthlyComparisonComponent,
+    SavingsRateComponent,
+    DebtOverviewComponent,
+    PolywidgetComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +121,13 @@ import {NgxCurrencyDirective} from 'ngx-currency';
     FormsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    PlotlyModule,
+    NgForOf,
+    GridsterComponent,
+    GridsterItemComponent,
+    FontAwesomeModule,
+    MatButtonModule
   ],
   providers: [
     // ScreenTrackingService,UserTrackingService

@@ -1,1 +1,5 @@
-Dashboard :)
+<gridster [options]="options">
+  <gridster-item [item]="item" *ngFor="let item of dashboard" class="gridster-item shadow">
+    <app-polywidget [type]="item['type']" (trashed)="onDeleteItem($event, item)"></app-polywidget>
+  </gridster-item>
+</gridster>

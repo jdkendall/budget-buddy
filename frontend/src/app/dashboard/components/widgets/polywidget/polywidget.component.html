@@ -1,0 +1,29 @@
+<div class="card-container">
+  <div class="drag-handle">
+    <fa-icon [icon]="faArrowsUpDownLeftRight" size="lg"></fa-icon>
+  </div>
+  <div class="gridster-item-content card-content">
+    <button class="trash-me" mat-icon-button (click)="onDelete($event)">
+      <fa-icon class="trash-icon" [icon]="faTrash" size="xs"></fa-icon>
+    </button>
+    <app-summary-current-balance *ngIf="type === 'current-balance'"></app-summary-current-balance>
+    <app-summary-total-income *ngIf="type === 'total-income'"></app-summary-total-income>
+    <app-summary-total-expenses *ngIf="type === 'total-expenses'"></app-summary-total-expenses>
+    <app-summary-net-cash-flow *ngIf="type === 'net-cash-flow'"></app-summary-net-cash-flow>
+    <app-charts-expenses-pie *ngIf="type === 'expenses-pie'"></app-charts-expenses-pie>
+    <app-charts-monthly-bar *ngIf="type === 'monthly-bar'"></app-charts-monthly-bar>
+    <app-charts-daily-line *ngIf="type === 'daily-line'"></app-charts-daily-line>
+    <app-charts-savings-donut *ngIf="type === 'savings-donut'"></app-charts-savings-donut>
+    <app-recent-transactions *ngIf="type === 'recent-transactions'"></app-recent-transactions>
+    <app-budget-overview *ngIf="type === 'budget-overview'"></app-budget-overview>
+    <app-savings-goals *ngIf="type === 'savings-goals'"></app-savings-goals>
+    <app-alerts-notifications *ngIf="type === 'alerts-notifications'"></app-alerts-notifications>
+    <app-upcoming-bills *ngIf="type === 'upcoming-bills'"></app-upcoming-bills>
+    <app-cash-flow-forecast *ngIf="type === 'cash-flow-forecast'"></app-cash-flow-forecast>
+    <app-quick-actions *ngIf="type === 'quick-actions'"></app-quick-actions>
+    <app-tips-insights *ngIf="type === 'tips-insights'"></app-tips-insights>
+    <app-monthly-comparison *ngIf="type === 'monthly-comparison'"></app-monthly-comparison>
+    <app-savings-rate *ngIf="type === 'savings-rate'"></app-savings-rate>
+    <app-debt-overview *ngIf="type === 'debt-overview'"></app-debt-overview>
+  </div>
+</div>
