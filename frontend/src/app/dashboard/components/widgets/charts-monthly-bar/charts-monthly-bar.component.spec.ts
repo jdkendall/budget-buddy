@@ -1,21 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ChartsMonthlyBarComponent } from './charts-monthly-bar.component';
+import {ChartsMonthlyBarComponent} from './charts-monthly-bar.component';
+import {PlotlyModule} from 'angular-plotly.js';
 
 describe('ChartsMonthlyBarComponent', () => {
-  let component: ChartsMonthlyBarComponent;
-  let fixture: ComponentFixture<ChartsMonthlyBarComponent>;
+    let component: ChartsMonthlyBarComponent;
+    let fixture: ComponentFixture<ChartsMonthlyBarComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [ChartsMonthlyBarComponent]
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            imports: [PlotlyModule],
+            declarations: [ChartsMonthlyBarComponent]
+        });
+        fixture = TestBed.createComponent(ChartsMonthlyBarComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
     });
-    fixture = TestBed.createComponent(ChartsMonthlyBarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
