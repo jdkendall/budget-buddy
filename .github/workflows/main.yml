@@ -24,6 +24,9 @@ jobs:
     - name: Install frontend dependencies
       run: cd frontend && npm install
 
+    - name: Run tests
+      run: cd frontend && ng test --sourceMap=false --browsers=ChromeHeadless --watch=false
+
     - name: Build Angular app
       run: cd frontend && ng build --configuration "production"
 
