@@ -32,9 +32,8 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     @Query("""
             SELECT new com.jdkendall.budgetbuddy.model.Expenditure(category, SUM(amount))
             FROM Transaction
-            WHERE userId = :userId
+            WHERE userId = :userId AND amount < 0
             GROUP BY category
             ORDER BY SUM(amount) DESC""")
     List<Expenditure> findTopExpenditures(UUID userId, Pageable pageable);
-
 }
