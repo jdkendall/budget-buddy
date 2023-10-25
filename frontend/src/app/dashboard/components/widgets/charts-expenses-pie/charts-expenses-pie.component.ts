@@ -36,13 +36,8 @@ export class ChartsExpensesPieComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.budgetOverviewSub = this.budgetService.getBudgetOverview().subscribe(data => {
             if(data) {
-                const newVals = data?.topExpenditures?.map(x => x.amount.toUnit() * -1);
-                const newLabels = data?.topExpenditures?.map(x => x.category.name);
-                this.data[0].values = newVals;
-                this.data[0].labels = newLabels;
-            } else {
-                this.data[0].values = [1,2,3];
-                this.data[0].labels = [1,2,3];
+                this.data[0].values = data?.topExpenditures?.map(x => x.amount.toUnit() * -1);
+                this.data[0].labels = data?.topExpenditures?.map(x => x.category.name);
             }
         });
     }
