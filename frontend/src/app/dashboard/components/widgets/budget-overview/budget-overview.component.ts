@@ -9,6 +9,5 @@ import {faBell, faCoins} from '@fortawesome/free-solid-svg-icons';
 export class BudgetOverviewComponent {
   readonly description: string = 'Compares the allocated budget against actual spending for various categories.';
 
-  protected readonly faBell = faBell;
   protected readonly faCoins = faCoins;
 }

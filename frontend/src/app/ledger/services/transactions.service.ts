@@ -1,5 +1,5 @@
 import {environment} from '../../../environments/environment';
-import {Transaction} from '../../shared/models/transaction.model';
+import {RawTransaction, refineTransaction, Transaction} from '../../shared/models/transaction.model';
 import {inject, Injectable} from '@angular/core';
 import {UserService} from '../../shared/services/user.service';
 import {catchError, map, Observable, switchMap, throwError} from 'rxjs';
@@ -41,19 +41,14 @@ export class TransactionsService {
       return throwError(() => 'Token is absent. User might not be authenticated.');
     }
 
-    return this.http.get<Transaction[]>(`${environment.bbApi.url}/transactions`, {
+    return this.http.get<RawTransaction[]>(`${environment.bbApi.url}/transactions`, {
       params: {
           startDate: moment(startDate).format("YYYY-MM-DD"),
           endDate: moment(endDate).format("YYYY-MM-DD")
         },
       headers: {Authorization: `Bearer ${token}`}
     }).pipe(
-      // Temporary until I implement Dinero type handling on server-side
-      map(txs => txs.map(tx => ({
-          ...tx,
-          amount: dinero({amount: 100 * (tx.amount as unknown as number), currency: 'USD'})
-        })
-      )));
+      map(txs => txs.map(refineTransaction)));
   }
 
   private createTransactionApiCall(token: string | null, transaction: Transaction): Observable<CreateTransactionResponse> {

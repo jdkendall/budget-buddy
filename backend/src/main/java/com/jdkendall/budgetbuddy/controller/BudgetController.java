@@ -1,5 +1,8 @@
 package com.jdkendall.budgetbuddy.controller;
 
+import com.jdkendall.budgetbuddy.dto.BudgetOverviewDto;
+import com.jdkendall.budgetbuddy.dto.mapper.BudgetMapper;
+import com.jdkendall.budgetbuddy.dto.mapper.ExpenditureMapper;
 import com.jdkendall.budgetbuddy.model.BBUser;
 import com.jdkendall.budgetbuddy.model.BudgetOverview;
 import com.jdkendall.budgetbuddy.service.BudgetService;
@@ -15,9 +18,13 @@ import java.util.concurrent.CompletableFuture;
 public class BudgetController {
     @Autowired
     BudgetService budgetService;
+
+    @Autowired
+    private BudgetMapper budgetMapper;
+
     @GetMapping
-    public CompletableFuture<BudgetOverview> getBudgetOverview(BBUser user) {
+    public CompletableFuture<BudgetOverviewDto> getBudgetOverview(BBUser user) {
         // Retrieve multiple data points from DB and combine into budget overview
-        return budgetService.getOverview(user);
+        return budgetService.getOverview(user).thenApply(budgetMapper::budgetOverviewToDTO);
     }
 }

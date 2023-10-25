@@ -14,7 +14,7 @@ export class LedgerComponent {
     @Input() transactions!: MatTableDataSource<Transaction>;
     displayColumns: string[] = ['date', 'transactionParty', 'category', 'amount'];
 
-    @ViewChild(MatSort) sort!: MatSort;
+    @ViewChild(MatSort, {static: true}) sort!: MatSort;
     @ViewChild(MatPaginator) paginator!: MatPaginator;
 
     get totalAmount(): Dinero {
@@ -34,6 +34,9 @@ export class LedgerComponent {
         // I'm sure there's some TypeScript magic to be done here to avoid explicit any…
         const field: any = data[sortHeader as keyof Transaction];
         switch (sortHeader) {
+            case 'date':
+                console.log(JSON.stringify(field))
+                return field
             case 'amount':
                 return field.toUnit()
             default:
@@ -42,15 +45,13 @@ export class LedgerComponent {
     }
 
     sortData(sort: Sort) {
+        console.log("Sorting!!")
         const isAsc = sort.direction === 'asc';
         const compare = (a: any, b: any) => (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 
         const data = this.transactions.data.slice();
-        console.table({sortActive: sort.active, isAsc});
         this.transactions.data = data.sort((a: any, b: any) => {
             switch (sort.active) {
-                case 'amount':
-                    return compare(a.amount, b.amount);
                 default:
                     return compare(a, b);
             }

@@ -1,13 +1,14 @@
-import {Component} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {GridsterConfig, GridsterItem, GridsterItemComponentInterface} from 'angular-gridster2';
 import {WidgetType} from '../widgets/polywidget/polywidget.component';
+import {BudgetService} from '../../services/budget.service';
 
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.less']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
     options: GridsterConfig = {
         // itemChangeCallback: this.itemChange,
         // itemResizeCallback: this.itemResize,
@@ -41,15 +42,11 @@ export class DashboardComponent {
     };
     dashboard: GridsterItem[] = [];
 
-    itemChange(item: GridsterItem, itemComponent: GridsterItemComponentInterface) {
-        console.info('itemChanged', item, itemComponent);
-    }
-
-    itemResize(item: GridsterItem, itemComponent: GridsterItemComponentInterface) {
-        console.info('itemResized', item, itemComponent);
-    }
+    budgetService: BudgetService = inject(BudgetService);
 
     ngOnInit() {
+        this.budgetService.refreshBudgetOverview();
+
         this.dashboard = [];
         const widgetDefs: WidgetDef[] = [
             {cols: 2, rows: 2, type: 'charts-expenses-pie'},

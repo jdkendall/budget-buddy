@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {Transaction} from '../../../shared/models/transaction.model';
 import dinero from 'dinero.js';
+import moment from 'moment';
 
 @Component({
   selector: 'app-quickbar',
@@ -14,7 +15,7 @@ export class QuickbarComponent {
   amount: number | undefined;
   transactionParty: string | undefined;
   category: string | undefined;
-  date: Date = new Date();
+  date: string = moment().format('YYYY-MM-DD');
   categories = ['Rent', 'Utilities', 'Groceries', 'Entertainment'];
 
   constructor() {

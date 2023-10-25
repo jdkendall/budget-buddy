@@ -1,3 +1,6 @@
 <div style="width: 100%; height:100%;">
-  <plotly-plot [data]="graph.data" [layout]="graph.layout" [config]="graph.frames"></plotly-plot>
+  <plotly-plot [data]="data"
+               [layout]="layout"
+               [config]="frameConfig"
+               [updateOnDataChange]="true"></plotly-plot>
 </div>
