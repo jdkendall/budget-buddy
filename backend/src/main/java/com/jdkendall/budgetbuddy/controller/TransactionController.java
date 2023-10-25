@@ -27,7 +27,9 @@ public class TransactionController {
     private TransactionMapper txMapper;
 
     @GetMapping
-    public ResponseEntity<List<TransactionDto>> getAllTransactions(BBUser user, @RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
+    public ResponseEntity<List<TransactionDto>> getAllTransactions(BBUser user,
+                                                                   @RequestParam LocalDate startDate,
+                                                                   @RequestParam LocalDate endDate) {
         List<TransactionDto> transactions = transactionService.getAllTransactionsForUser(user.getId(), Optional.of(startDate), Optional.of(endDate))
                 .stream()
                 .map(this.txMapper::txToDTO)
@@ -36,7 +38,8 @@ public class TransactionController {
     }
 
     @PostMapping
-    public ResponseEntity<CreateTransactionResponse> createTransaction(BBUser user, @RequestBody CreateTransactionRequest tx) {
+    public ResponseEntity<CreateTransactionResponse> createTransaction(BBUser user,
+                                                                       @RequestBody CreateTransactionRequest tx) {
         Transaction transaction = transactionService.addTransaction(user, tx);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
