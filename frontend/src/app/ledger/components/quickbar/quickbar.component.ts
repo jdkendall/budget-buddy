@@ -10,6 +10,7 @@ import dinero from 'dinero.js';
 export class QuickbarComponent {
   @Output() addTransaction = new EventEmitter<Transaction>();
 
+  txType: 'expense' | 'income' = 'expense';
   amount: number | undefined;
   transactionParty: string | undefined;
   category: string | undefined;
@@ -27,9 +28,11 @@ export class QuickbarComponent {
       throw new Error('No');
     }
 
+    const isExpense = this.txType === 'expense' ? -1 : 1;
+
     const newTx: Transaction = {
       date: this.date,
-      amount: dinero({amount: Math.floor(this.amount * 100), currency: 'USD'}),
+      amount: dinero({amount: Math.floor(this.amount * 100 * isExpense), currency: 'USD'}),
       transactionParty: this.transactionParty,
       category: this.category,
       id

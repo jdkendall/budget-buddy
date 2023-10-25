@@ -36,8 +36,6 @@ export class LedgerComponent {
         switch (sortHeader) {
             case 'amount':
                 return field.toUnit()
-            case 'date':
-                return field.getTime()
             default:
                 return field
         }
