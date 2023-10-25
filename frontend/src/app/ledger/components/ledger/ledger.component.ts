@@ -45,7 +45,6 @@ export class LedgerComponent {
     }
 
     sortData(sort: Sort) {
-        console.log("Sorting!!")
         const isAsc = sort.direction === 'asc';
         const compare = (a: any, b: any) => (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 
