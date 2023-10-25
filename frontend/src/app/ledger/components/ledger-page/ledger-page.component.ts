@@ -36,6 +36,11 @@ export class LedgerPageComponent implements OnInit {
     // Optimistically update the UI
     this.transactions.data = [...this.transactions.data, newTx];
 
+    // Bodge to make mat-table re-sort
+    var sort = this.transactions.sort;
+    this.transactions.sort = null;
+    this.transactions.sort = sort;
+
     // Send the data to the server
     this.transactionsService.createTransaction(newTx).subscribe(
       {

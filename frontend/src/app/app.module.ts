@@ -71,6 +71,7 @@ import {PolywidgetComponent} from './dashboard/components/widgets/polywidget/pol
 import { PlotlyViaCDNModule } from 'angular-plotly.js';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatButtonModule} from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 PlotlyViaCDNModule.setPlotlyVersion('latest');
 
@@ -108,26 +109,27 @@ PlotlyViaCDNModule.setPlotlyVersion('latest');
     DebtOverviewComponent,
     PolywidgetComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    NgxCurrencyDirective,
-    HttpClientModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    // provideAnalytics(() => getAnalytics()),
-    provideAuth(() => getAuth()),
-    FormsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    PlotlyViaCDNModule,
-    NgForOf,
-    GridsterComponent,
-    GridsterItemComponent,
-    FontAwesomeModule,
-    MatButtonModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        NgxCurrencyDirective,
+        HttpClientModule,
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        // provideAnalytics(() => getAnalytics()),
+        provideAuth(() => getAuth()),
+        FormsModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        PlotlyViaCDNModule,
+        NgForOf,
+        GridsterComponent,
+        GridsterItemComponent,
+        FontAwesomeModule,
+        MatButtonModule,
+        MatButtonToggleModule
+    ],
   providers: [
     // ScreenTrackingService,UserTrackingService
   ],
