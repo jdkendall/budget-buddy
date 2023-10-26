@@ -3,7 +3,13 @@ import {By} from '@angular/platform-browser';
 import {PolywidgetComponent, widgetTypes} from './polywidget.component';
 import {PlotlyModule} from 'angular-plotly.js';
 import * as plotlyjs from 'plotly.js-dist-min';
-import {DASHBOARD_PAGE_IMPORTS, POLYWIDGET_DECLARATIONS} from '../../../../../tests/shared-scaffolding.spec';
+import {
+    COMMON_PROVIDERS,
+    DASHBOARD_PAGE_IMPORTS,
+    POLYWIDGET_DECLARATIONS
+} from '../../../../../tests/shared-scaffolding.spec';
+import {UserService} from '../../../../shared/services/user.service';
+import {MockUserService} from '../../../../../tests/shared-mocks.spec';
 
 PlotlyModule.plotlyjs = plotlyjs;
 
@@ -14,7 +20,11 @@ describe('PolywidgetComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: POLYWIDGET_DECLARATIONS,
-            imports: DASHBOARD_PAGE_IMPORTS
+            imports: DASHBOARD_PAGE_IMPORTS,
+            providers: [
+                ...COMMON_PROVIDERS,
+                {provide: UserService, useValue: new MockUserService()},
+            ]
         })
             .compileComponents();
     });

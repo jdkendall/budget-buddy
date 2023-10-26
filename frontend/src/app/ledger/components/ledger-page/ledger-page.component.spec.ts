@@ -74,7 +74,7 @@ describe('LedgerPageComponent', () => {
                     amount: 10,
                     currency: 'USD'
                 }),
-                date: new Date('2022-01-01T00:00:00.000Z'),
+                date: '2022-01-01',
                 category: 'Fast Food'
             };
             component.addTransaction(newTx);
@@ -91,7 +91,7 @@ describe('LedgerPageComponent', () => {
                     amount: 10,
                     currency: 'USD'
                 }),
-                date: new Date('2022-01-01T00:00:00.000Z'),
+                date: '2022-01-01',
                 category: 'Fast Food'
             };
             component.addTransaction(newTx);
@@ -101,9 +101,9 @@ describe('LedgerPageComponent', () => {
 
     describe('onDateRangeChanged', () => {
         it('should load transactions for the given date range', () => {
-            const dateEvent: DateChangeEvent = {startDate: new Date(), endDate: new Date()};
+            const dateEvent: DateChangeEvent = {startDate: '2023-10-15', endDate: '2023-11-15'};
             component.onDateRangeChanged(dateEvent);
-            expect(transactionsService.getTransactions).toHaveBeenCalledWith(dateEvent.startDate, dateEvent.endDate);
+            expect(transactionsService.getTransactions).toHaveBeenCalledWith(new Date(dateEvent.startDate), new Date(dateEvent.endDate));
             expect(component.isLoading).toBeFalse();
         });
     });

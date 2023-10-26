@@ -50,8 +50,11 @@ import {MatTableModule} from '@angular/material/table';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSortModule} from '@angular/material/sort';
 import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {HttpClient} from '@angular/common/http';
 
-export const COMMON_IMPORTS = [RouterTestingModule]
+export const COMMON_IMPORTS = [RouterTestingModule, HttpClientTestingModule]
+export const COMMON_PROVIDERS = [HttpClient]
 export const DASHBOARD_PAGE_IMPORTS = [...COMMON_IMPORTS, FontAwesomeTestingModule, PlotlyModule, GridsterModule]
 export const LEDGER_PAGE_IMPORTS = [...COMMON_IMPORTS, MatTableModule, MatPaginatorModule, NoopAnimationsModule, MatSortModule]
 export const BUDGET_PAGE_IMPORTS = [...COMMON_IMPORTS, FontAwesomeTestingModule, PlotlyModule]

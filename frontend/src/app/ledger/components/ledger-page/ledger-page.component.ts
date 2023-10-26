@@ -3,7 +3,7 @@ import {Transaction} from '../../../shared/models/transaction.model';
 import {TransactionsService} from '../../services/transactions.service';
 import {DateChangeEvent} from '../../../shared/components/date-range-filter/date-range-filter.component';
 import moment from 'moment';
-import {MatTableDataSource, MatTableDataSourcePaginator} from '@angular/material/table';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-ledger-page',
@@ -60,7 +60,7 @@ export class LedgerPageComponent implements OnInit {
 
   onDateRangeChanged($event: DateChangeEvent) {
     this.isLoading = true;
-    this.transactionsService.getTransactions($event.startDate, $event.endDate).subscribe({
+    this.transactionsService.getTransactions(new Date($event.startDate), new Date($event.endDate)).subscribe({
       next: (data: Transaction[]) => {
         this.transactions.data = data;
         this.isLoading = false;
