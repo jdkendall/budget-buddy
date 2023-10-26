@@ -3,6 +3,8 @@ import {By} from '@angular/platform-browser';
 import {DashboardComponent} from './dashboard.component';
 import {WidgetType} from '../widgets/polywidget/polywidget.component';
 import {DASHBOARD_PAGE_IMPORTS, POLYWIDGET_DECLARATIONS} from '../../../../tests/shared-scaffolding.spec';
+import {UserService} from '../../../shared/services/user.service';
+import {MockUserService} from '../../../../tests/shared-mocks.spec';
 
 describe('DashboardComponent', () => {
     let component: DashboardComponent;
@@ -12,6 +14,7 @@ describe('DashboardComponent', () => {
         await TestBed.configureTestingModule({
             imports: [...DASHBOARD_PAGE_IMPORTS],
             declarations: [DashboardComponent, ...POLYWIDGET_DECLARATIONS],
+            providers: [{provide: UserService, useValue: new MockUserService()},]
         }).compileComponents();
     });
 

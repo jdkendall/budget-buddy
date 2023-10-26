@@ -4,6 +4,8 @@ import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {LEDGER_PAGE_IMPORTS} from '../../../../tests/shared-scaffolding.spec';
 import {NgxCurrencyDirective} from 'ngx-currency';
+import moment from 'moment';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 describe('QuickbarComponent', () => {
     let component: QuickbarComponent;
@@ -12,7 +14,7 @@ describe('QuickbarComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [QuickbarComponent],
-            imports: [...LEDGER_PAGE_IMPORTS, FormsModule, NgxCurrencyDirective]
+            imports: [...LEDGER_PAGE_IMPORTS, FormsModule, NgxCurrencyDirective, MatButtonToggleModule]
         })
             .compileComponents();
     });
@@ -34,7 +36,7 @@ describe('QuickbarComponent', () => {
             component.amount = 100;
             component.transactionParty = 'Test Party';
             component.category = 'Rent';
-            component.date = new Date();
+            component.date = moment().format("YYYY-MM-DD");
 
             component.addEntry();
 
@@ -46,7 +48,7 @@ describe('QuickbarComponent', () => {
             component.amount = undefined;
             component.transactionParty = 'Test Party';
             component.category = 'Rent';
-            component.date = new Date();
+            component.date = moment().format("YYYY-MM-DD");
 
             expect(() => component.addEntry()).toThrowError('No');
         });

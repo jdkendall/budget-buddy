@@ -9,8 +9,8 @@ describe('LedgerComponent', () => {
     let component: LedgerComponent;
     let fixture: ComponentFixture<LedgerComponent>;
     const mockTransactions: Transaction[] = [
-        {id: 1, date: new Date('2022-01-01'), transactionParty: 'Party A', category: 'Food', amount: dinero({amount: 1000, currency: 'USD'})},
-        {id: 2, date: new Date('2022-01-02'), transactionParty: 'Party B', category: 'Entertainment', amount: dinero({amount: 2000, currency: 'USD'})}
+        {id: 1, date: '2022-01-01', transactionParty: 'Party A', category: 'Food', amount: dinero({amount: 1000, currency: 'USD'})},
+        {id: 2, date: '2022-01-02', transactionParty: 'Party B', category: 'Entertainment', amount: dinero({amount: 2000, currency: 'USD'})}
     ];
 
     beforeEach(async () => {
@@ -49,7 +49,7 @@ describe('LedgerComponent', () => {
 
         it('should return field value for other sortHeaders', () => {
             const tx: Transaction = mockTransactions[0];
-            expect(component.sortingDataAccessor(tx, 'date')).toEqual(tx.date.getTime());
+            expect(component.sortingDataAccessor(tx, 'date')).toEqual(tx.date);
             expect(component.sortingDataAccessor(tx, 'transactionParty')).toEqual(tx.transactionParty);
             expect(component.sortingDataAccessor(tx, 'category')).toEqual(tx.category);
         });
@@ -70,7 +70,7 @@ describe('LedgerComponent', () => {
 
         it('should sort data based on other fields', () => {
             component.sortData({active: 'date', direction: 'asc'});
-            expect(component.transactions.data[0].date.getTime()).toBeLessThan(component.transactions.data[1].date.getTime());
+            expect(new Date(component.transactions.data[0].date).getTime()).toBeLessThan(new Date(component.transactions.data[1].date).getTime());
         });
     });
 });
