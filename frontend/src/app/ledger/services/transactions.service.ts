@@ -5,7 +5,6 @@ import {UserService} from '../../shared/services/user.service';
 import {catchError, map, Observable, switchMap, throwError} from 'rxjs';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {CreateTransactionResponse} from '../models/CreateTransactionResponse.model';
-import dinero from 'dinero.js';
 import moment from 'moment';
 
 @Injectable({

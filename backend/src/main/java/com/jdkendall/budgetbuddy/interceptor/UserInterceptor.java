@@ -2,9 +2,9 @@ package com.jdkendall.budgetbuddy.interceptor;
 
 import com.jdkendall.budgetbuddy.model.BBUser;
 import com.jdkendall.budgetbuddy.repository.UserRepository;
+import jakarta.annotation.Nullable;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.stereotype.Component;
@@ -14,14 +14,17 @@ import org.springframework.web.servlet.HandlerInterceptor;
 public class UserInterceptor implements HandlerInterceptor {
 
     public static final String IDENTITY_CLAIM = "sub";
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private JwtDecoder jwtDecoder;
+    private final JwtDecoder jwtDecoder;
+
+    public UserInterceptor(UserRepository userRepository, JwtDecoder jwtDecoder) {
+        this.userRepository = userRepository;
+        this.jwtDecoder = jwtDecoder;
+    }
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, @Nullable HttpServletResponse response, @Nullable Object handler) {
         String authHeader = request.getHeader("Authorization");
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String jwtToken = authHeader.substring(7);

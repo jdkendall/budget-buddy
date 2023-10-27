@@ -37,7 +37,7 @@ export class LedgerPageComponent implements OnInit {
     this.transactions.data = [...this.transactions.data, newTx];
 
     // Bodge to make mat-table re-sort
-    var sort = this.transactions.sort;
+    const sort = this.transactions.sort;
     this.transactions.sort = null;
     this.transactions.sort = sort;
 

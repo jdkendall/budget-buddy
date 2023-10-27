@@ -38,24 +38,24 @@ Budget Buddy is a web-based budget tracking application built with Java, Spring 
 ### Installation
 
 1. Clone the repository:
-
-```sh
-git clone https://github.com/jdkendall/budget-buddy.git
-```
+    
+    ```sh
+    git clone https://github.com/jdkendall/budget-buddy.git
+    ```
 
 2. Navigate to the backend directory and build the project:
 
-```sh
-cd budget-buddy/backend
-gradle bootRun
-```
+    ```sh
+    cd budget-buddy/backend
+    gradle bootRun
+    ```
 
 3. In a separate terminal, navigate to the frontend directory and start the Angular app:
 
-```sh
-cd budget-buddy/frontend
-ng serve
-```
+    ```sh
+    cd budget-buddy/frontend
+    ng serve
+    ```
 
 4. Open a web browser and navigate to `http://localhost:4200` to access the application.
 
@@ -94,7 +94,7 @@ You can view the CI workflow details in the `.github/workflows` directory in the
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License. See the [LICENSE](/LICENSE) file for details.
 
 ## Acknowledgments
 

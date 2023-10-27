@@ -1,4 +1,3 @@
-import firebase from 'firebase/compat';
 import dinero, {Dinero} from 'dinero.js';
 import {RawTransaction, refineTransaction, Transaction} from '../../shared/models/transaction.model';
 

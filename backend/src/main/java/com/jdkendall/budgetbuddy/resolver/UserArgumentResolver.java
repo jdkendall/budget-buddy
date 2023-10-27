@@ -1,6 +1,7 @@
 package com.jdkendall.budgetbuddy.resolver;
 
 import com.jdkendall.budgetbuddy.model.BBUser;
+import jakarta.annotation.Nullable;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -18,7 +19,8 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
     }
 
     @Override
-    public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
+    @Nullable
+    public Object resolveArgument(@Nullable MethodParameter parameter, @Nullable ModelAndViewContainer mavContainer, NativeWebRequest webRequest, @Nullable WebDataBinderFactory binderFactory) {
         return webRequest.getAttribute("user", RequestAttributes.SCOPE_REQUEST);
     }
 }

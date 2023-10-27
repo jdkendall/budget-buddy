@@ -12,7 +12,7 @@ export class UserService {
 
   constructor() {
     this.user$ = new Observable<User | null>(sub => {
-      // Return the unsubscribe function so it's called when the observable is completed/destroyed
+      // Return the unsubscribe function, so it's called when the observable is completed/destroyed
       return this.auth.onAuthStateChanged(user => sub.next(user),);
     });
   }

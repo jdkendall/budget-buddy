@@ -8,7 +8,6 @@ import com.jdkendall.budgetbuddy.model.TransactionParty;
 import com.jdkendall.budgetbuddy.repository.CategoryRepository;
 import com.jdkendall.budgetbuddy.repository.TransactionPartyRepository;
 import com.jdkendall.budgetbuddy.repository.TransactionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -19,12 +18,15 @@ import java.util.UUID;
 
 @Service
 public class TransactionService {
-    @Autowired
-    private TransactionRepository transactionRepository;
-    @Autowired
-    private CategoryRepository categoryRepository;
-    @Autowired
-    private TransactionPartyRepository txPartyRepository;
+    private final TransactionRepository transactionRepository;
+    private final CategoryRepository categoryRepository;
+    private final TransactionPartyRepository txPartyRepository;
+
+    public TransactionService(TransactionRepository transactionRepository, CategoryRepository categoryRepository, TransactionPartyRepository txPartyRepository) {
+        this.transactionRepository = transactionRepository;
+        this.categoryRepository = categoryRepository;
+        this.txPartyRepository = txPartyRepository;
+    }
 
     @Deprecated
     public List<Transaction> getAllTransactionsForUser(UUID id) {

@@ -28,9 +28,7 @@ JSON Web Key Set (JWKs) is a JSON structure that represents a set of public keys
 
 1. **Key Representation**: Each key in the set is represented by a JSON object, and this object contains various attributes detailing the key, such as its type, usage, algorithm, and public key details.
 
-
 2. **Key Rotation**: One of the advantages of JWKs is that it supports key rotation. As security best practices may necessitate periodic key rotation, having multiple keys in a set is helpful. When keys are rotated, new keys can be added to the set, and old keys can be removed, all without service interruption.
-
 
 3. **Key Identification**: Each key in the JWKs has a unique identifier, called `kid` (key ID). This identifier is often present in the header of a JWT. By matching the `kid` in the JWT with the one in the JWKs, the backend can determine which public key to use for verification.
 
@@ -41,13 +39,11 @@ Firebase Authentication uses JWTs as ID tokens, and these JWTs are signed using 
 
 1. **Fetching the JWKs**: When our backend receives a JWT from the frontend (after a user logs in via Firebase on the frontend), it needs to verify this token. The backend can fetch the JWKs from Firebase's JWKS endpoint.
 
-
 2. **Token Verification**: Once the JWKs are retrieved, the backend can:
    - Check the `kid` value in the JWT header.
    - Find the corresponding key in the JWKs using this `kid`.
    - Extract the public key from the matched JWK.
    - Use this public key to verify the signature of the JWT, ensuring it was genuinely issued by Firebase and hasn't been tampered with.
-
 
 3. **Security Advantages**: By using JWKs, Firebase ensures that even if a key gets compromised, they can seamlessly rotate to a new key. Backends that rely on Firebase's JWKS endpoint for key retrieval will automatically get the new key on their next fetch, ensuring uninterrupted and secure service.
 

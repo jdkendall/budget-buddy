@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {faBell, faReceipt} from '@fortawesome/free-solid-svg-icons';
+import {Component} from '@angular/core';
+import {faBell} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-alerts-notifications',
@@ -9,6 +9,5 @@ import {faBell, faReceipt} from '@fortawesome/free-solid-svg-icons';
 export class AlertsNotificationsComponent {
   readonly description: string = 'Keeps you informed of important financial updates and reminders.';
 
-  protected readonly faReceipt = faReceipt;
   protected readonly faBell = faBell;
 }
