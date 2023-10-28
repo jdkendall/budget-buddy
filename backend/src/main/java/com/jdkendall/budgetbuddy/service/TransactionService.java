@@ -11,6 +11,7 @@ import com.jdkendall.budgetbuddy.repository.TransactionRepository;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -67,9 +68,12 @@ public class TransactionService {
         Transaction transaction = new Transaction();
         transaction.setUserId(user.getId());
         transaction.setDate(request.date());
-        transaction.setAmount(BigDecimal.valueOf(request.amount()));
         transaction.setTransactionParty(party);
         transaction.setCategory(category);
+
+        BigDecimal txAmountInCents = BigDecimal.valueOf(request.amount().amount());
+        transaction.setAmount(txAmountInCents.divide(BigDecimal.valueOf(100), RoundingMode.HALF_EVEN));
+
         return transactionRepository.save(transaction);
     }
 }

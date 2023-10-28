@@ -59,7 +59,7 @@ export class TransactionsService {
     return this.http.post<CreateTransactionResponse>(`${environment.bbApi.url}/transactions`, {
       ...transaction,
       date: moment(transaction.date).format("YYYY-MM-DD"),
-      amount: transaction.amount.toUnit()
+      amount: transaction.amount
     }, {
       headers: {
         Authorization: `Bearer ${token}`,

@@ -9,5 +9,5 @@ import org.mapstruct.Mapping;
 public interface TransactionMapper {
     @Mapping(target = "transactionParty", source = "transactionParty.name")
     @Mapping(target = "category", source = "category.name")
-    TransactionDto txToDTO(Transaction transaction);
+    TransactionDto txToDTO(Transaction source);
 }
