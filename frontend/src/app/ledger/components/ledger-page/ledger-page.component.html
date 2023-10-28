@@ -3,10 +3,7 @@
     <app-quickbar class="bar-shrink" (addTransaction)="addTransaction($event)"></app-quickbar>
     <app-date-range-filter class="bar-shrink" (dateChanged)="onDateRangeChanged($event)"></app-date-range-filter>
   </div>
-  <div class="spinner-box" *ngIf="isLoading">
-    <!-- display loading widget -->
-    <div class="spinner"></div>
-  </div>
+  <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
   <div *ngIf="!isLoading">
     <app-ledger [transactions]="transactions"></app-ledger>
   </div>

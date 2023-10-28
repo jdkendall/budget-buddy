@@ -72,6 +72,7 @@ import { PlotlyViaCDNModule } from 'angular-plotly.js';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 
 PlotlyViaCDNModule.setPlotlyVersion('latest');
 
@@ -107,7 +108,8 @@ PlotlyViaCDNModule.setPlotlyVersion('latest');
     MonthlyComparisonComponent,
     SavingsRateComponent,
     DebtOverviewComponent,
-    PolywidgetComponent
+    PolywidgetComponent,
+    LoadingSpinnerComponent
   ],
     imports: [
         BrowserModule,
