@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {faExchangeAlt, faMoneyBillTransfer} from '@fortawesome/free-solid-svg-icons';
+import {Component} from '@angular/core';
+import {faMoneyBillTransfer} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-summary-net-cash-flow',

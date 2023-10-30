@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {faBell, faSearchDollar} from '@fortawesome/free-solid-svg-icons';
+import {Component} from '@angular/core';
+import {faSearchDollar} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-cash-flow-forecast',

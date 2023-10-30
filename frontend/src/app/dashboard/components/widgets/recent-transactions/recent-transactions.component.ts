@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {faBook, faReceipt} from '@fortawesome/free-solid-svg-icons';
+import {Component} from '@angular/core';
+import {faReceipt} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-recent-transactions',
@@ -9,6 +9,5 @@ import {faBook, faReceipt} from '@fortawesome/free-solid-svg-icons';
 export class RecentTransactionsComponent {
   readonly description: string = 'Lists the most recent financial activities, both income and expenses.';
 
-  protected readonly faBook = faBook;
   protected readonly faReceipt = faReceipt;
 }

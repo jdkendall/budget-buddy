@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {faBell, faCoins} from '@fortawesome/free-solid-svg-icons';
+import {Component} from '@angular/core';
+import {faCoins} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-budget-overview',

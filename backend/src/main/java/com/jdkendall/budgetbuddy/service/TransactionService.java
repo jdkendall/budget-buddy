@@ -8,10 +8,10 @@ import com.jdkendall.budgetbuddy.model.TransactionParty;
 import com.jdkendall.budgetbuddy.repository.CategoryRepository;
 import com.jdkendall.budgetbuddy.repository.TransactionPartyRepository;
 import com.jdkendall.budgetbuddy.repository.TransactionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -19,12 +19,15 @@ import java.util.UUID;
 
 @Service
 public class TransactionService {
-    @Autowired
-    private TransactionRepository transactionRepository;
-    @Autowired
-    private CategoryRepository categoryRepository;
-    @Autowired
-    private TransactionPartyRepository txPartyRepository;
+    private final TransactionRepository transactionRepository;
+    private final CategoryRepository categoryRepository;
+    private final TransactionPartyRepository txPartyRepository;
+
+    public TransactionService(TransactionRepository transactionRepository, CategoryRepository categoryRepository, TransactionPartyRepository txPartyRepository) {
+        this.transactionRepository = transactionRepository;
+        this.categoryRepository = categoryRepository;
+        this.txPartyRepository = txPartyRepository;
+    }
 
     @Deprecated
     public List<Transaction> getAllTransactionsForUser(UUID id) {
@@ -65,9 +68,12 @@ public class TransactionService {
         Transaction transaction = new Transaction();
         transaction.setUserId(user.getId());
         transaction.setDate(request.date());
-        transaction.setAmount(BigDecimal.valueOf(request.amount()));
         transaction.setTransactionParty(party);
         transaction.setCategory(category);
+
+        BigDecimal txAmountInCents = BigDecimal.valueOf(request.amount().amount());
+        transaction.setAmount(txAmountInCents.divide(BigDecimal.valueOf(100), RoundingMode.HALF_EVEN));
+
         return transactionRepository.save(transaction);
     }
 }

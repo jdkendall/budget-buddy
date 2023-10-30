@@ -1,5 +1,5 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {GridsterConfig, GridsterItem, GridsterItemComponentInterface} from 'angular-gridster2';
+import {GridsterConfig, GridsterItem} from 'angular-gridster2';
 import {WidgetType} from '../widgets/polywidget/polywidget.component';
 import {BudgetService} from '../../services/budget.service';
 

@@ -1,7 +1,7 @@
 import {of} from 'rxjs';
 
 export class MockUserService {
-    getIdToken() {
+    public getIdToken() {
         return of("1234")
     }
 }

@@ -5,7 +5,6 @@ import {UserService} from '../../shared/services/user.service';
 import {catchError, map, Observable, switchMap, throwError} from 'rxjs';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {CreateTransactionResponse} from '../models/CreateTransactionResponse.model';
-import dinero from 'dinero.js';
 import moment from 'moment';
 
 @Injectable({
@@ -60,7 +59,7 @@ export class TransactionsService {
     return this.http.post<CreateTransactionResponse>(`${environment.bbApi.url}/transactions`, {
       ...transaction,
       date: moment(transaction.date).format("YYYY-MM-DD"),
-      amount: transaction.amount.toUnit()
+      amount: transaction.amount
     }, {
       headers: {
         Authorization: `Bearer ${token}`,

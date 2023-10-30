@@ -32,10 +32,13 @@ export class ChartsExpensesPieComponent implements OnInit, OnDestroy {
 
     budgetService: BudgetService = inject(BudgetService);
     budgetOverviewSub?: Subscription;
+    loading: boolean = true;
 
     ngOnInit() {
+        this.loading = true;
         this.budgetOverviewSub = this.budgetService.getBudgetOverview().subscribe(data => {
             if(data) {
+                this.loading = false;
                 this.data[0].values = data?.topExpenditures?.map(x => x.amount.toUnit() * -1);
                 this.data[0].labels = data?.topExpenditures?.map(x => x.category.name);
             }

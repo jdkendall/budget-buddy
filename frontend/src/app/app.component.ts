@@ -9,7 +9,6 @@ import {Auth} from '@angular/fire/auth';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent implements OnInit {
-  title = 'Budget Buddy';
   showLogin: boolean = false;
   showLogout: boolean = false;
 
@@ -40,6 +39,6 @@ export class AppComponent implements OnInit {
     await this.auth.signOut();
 
     // Navigate to the login page or initiate the Firebase login flow
-    this.router.navigate(['/']);
+    await this.router.navigate(['/']);
   }
 }

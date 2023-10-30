@@ -1,7 +1,6 @@
 package com.jdkendall.budgetbuddy.dto.mapper;
 
 import com.jdkendall.budgetbuddy.dto.Dinero;
-import com.jdkendall.budgetbuddy.dto.TransactionDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
